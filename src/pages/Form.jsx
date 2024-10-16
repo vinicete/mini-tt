@@ -6,8 +6,8 @@ export const FormSignUp = ()=>{
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate()
   
-  const onSubmit = (data) => {
-    console.log(data); 
+  const onSubmit = ({email, senha}) => {
+    console.log({email,senha}); 
     navigate('/sign-in')
   };
 
