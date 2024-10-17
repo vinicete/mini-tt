@@ -1,14 +1,29 @@
+import { useState } from 'react';
 import {useForm} from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
 export const FormSignUp = ()=>{
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate()
   
+  const [requesting, setRequesting] = useState(false)
+
   const onSubmit = ({email, senha}) => {
-    console.log({email,senha}); 
-    navigate('/sign-in')
+
+    setRequesting(true);
+    const auth = getAuth()
+    createUserWithEmailAndPassword(auth,email,senha)
+      .then((credential) =>{
+        localStorage.setItem("access-token",credential.user.accessToken)
+        console.log({email,senha}); 
+        navigate('/sign-in')
+      })
+      .catch((error) => console.error(error.message))
+      .finally(()=> setRequesting(false))
+    
+    
   };
 
   return(
@@ -32,10 +47,22 @@ export const FormSignIn = ()=>{
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate()
+  const [requesting, setRequesting] = useState(false)
   
-  const onSubmit = (data) => {
-    console.log(data); 
-    navigate('/feed')
+  const onSubmit = ({email, senha}) => {
+
+    setRequesting(true);
+    const auth = getAuth()
+    signInWithEmailAndPassword(auth,email,senha)
+      .then((credential) =>{
+        //localStorage.setItem("access-token",credential.user.accessToken)
+        console.log({email,senha}); 
+        navigate('/feed')
+      })
+      .catch((error) => console.error(error.message))
+      .finally(()=> setRequesting(false))
+    
+    
   };
 
   return(

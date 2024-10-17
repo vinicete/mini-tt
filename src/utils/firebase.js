@@ -1,6 +1,7 @@
-import { initializeApp } from 'firebase/app';
-import firebaseConfig from '../../firebase.config';
+import { initializeApp } from "firebase/app";
 
+import firebaseConfig from "../../firebase.config.js";
 
+const connect = () => initializeApp(firebaseConfig);
 
-export const connect = ()=> initializeApp(firebaseConfig);
+export { connect };
