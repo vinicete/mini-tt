@@ -1,13 +1,17 @@
+import { jwtDecode } from "jwt-decode";
 import { Header } from "./Header"
 import { useForm } from 'react-hook-form'
+import { Mite } from "./Mite";
+
 
 
 export const Feed = ()=>{
   const { register, handleSubmit, formState: { errors } } = useForm();
-
+  const user = jwtDecode(localStorage.getItem("access-token"))
+  
   return(
     <div className="h-screen ">
-      <Header/> 
+      <Header email={user.email}/> 
       <div className="h-[calc(100vh-56px)] bg-[#E5E7EB] flex justify-center">
         <div className="w-[80%]">
           <div className="flex flex-col mt-14 gap-2">
@@ -20,15 +24,8 @@ export const Feed = ()=>{
             <button className="bg-sky-500 mt-3 sm:mt-0 px-2 py-1 text-white rounded">mitar (mini-twittar)</button>
           </div>
           {/*<h2>Seus mites (mini-twittes):</h2>*/}
-          <div className="bg-white border border-zinc-300 mt-10 p-3 flex flex-col gap-6 rounded">
-            
-            <p className="text-lg text-zinc-500">7Days of Codeee faz o L</p>
-            <div className="flex flex-col sm:justify-between sm:flex-row">
-              <span className="text-sky-500">email@gmail.com</span>
-              <span className="text-sm text-zinc-500">16/10/2024, 8:50:32 AM</span>
-            </div>
-
-          </div>
+          <Mite email={user.email}/>
+          
         </div>
 
         

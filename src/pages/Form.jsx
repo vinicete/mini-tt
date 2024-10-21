@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import {useForm} from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
@@ -55,7 +56,7 @@ export const FormSignIn = ()=>{
     const auth = getAuth()
     signInWithEmailAndPassword(auth,email,senha)
       .then((credential) =>{
-        //localStorage.setItem("access-token",credential.user.accessToken)
+        localStorage.setItem("access-token",credential.user.accessToken)
         console.log({email,senha}); 
         navigate('/feed')
       })
