@@ -1,8 +1,5 @@
-# React + Vite
+# Mini - Twitter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esse projeto é uma resolução do desafio #7DaysOfCode da Alura.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Atualmente nao está finalizado, terminarei em breve (pretendo consolidar os fundamentos do react primeiro para conseguir lidar com funções mais complexas)
